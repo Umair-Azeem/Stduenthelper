@@ -1,0 +1,3 @@
+button:active {
+    transform: none; /* Prevent button from resizing on click */
+  }
