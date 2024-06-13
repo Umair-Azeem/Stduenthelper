@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const studentRouter = require('./routes/Studentroutes');
 
 const app = express();
@@ -7,6 +8,8 @@ const port = process.env.PORT || 3000;
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
+
+app.use(cors())
 
 // Use the student router for routes starting with /students
 app.use('/students', studentRouter);

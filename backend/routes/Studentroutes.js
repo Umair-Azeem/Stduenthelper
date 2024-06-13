@@ -1,5 +1,3 @@
-// studentRoutes.js
-
 const express = require('express');
 const router = express.Router();
 const studentController = require('../controller/studentcontroller');
@@ -15,6 +13,10 @@ router.get('/subject/:subject', studentController.getStudentsBySubject);
 
 // Get students by available time slots
 router.get('/slots', studentController.getStudentsByTimeSlot);
+
+router.get('/search', studentController.getStudentsByCombinedCriteria);
+
+
 
 // Get a student by ID - This should be defined last
 router.get('/:id', studentController.getStudentById);

@@ -1,0 +1,32 @@
+.footer {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+    color: #666;
+  }
+  
+  .footer h4 {
+    color: #333;
+  }
+  
+  .footer p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive layout for small screens */
+  @media (max-width: 767px) {
+    .footer .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  

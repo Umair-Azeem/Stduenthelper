@@ -83,21 +83,39 @@ exports.getStudentsBySubject = async (req, res) => {
 
 // Get students by available time slots
 exports.getStudentsByTimeSlot = async (req, res) => {
-    const { day, time } = req.query;
-    console.log("day:", day);
-    console.log("time:", time);
+  const { day, time } = req.query;
 
-    if (!day || !time) {
-        return res.status(400).send({ error: 'Day and time query parameters are required' });
-    }
+  if (!day || !time) {
+    return res.status(400).send({ error: 'Day and time query parameters are required' });
+  }
 
-    try {
-        // Find students with matching time slots
-        const students = await Student.find({
-            [`timeSlotsPerDayInWeekend.${day}`]: time
-        });
-        res.send(students);
-    } catch (error) {
-        res.status(500).send(error);
-    }
+  try {
+    const students = await Student.find({
+      [`timeSlotsPerDayInWeekend.${day}`]: time
+    });
+    res.send(students);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+
+
+// Get students by combined criteria
+exports.getStudentsByCombinedCriteria = async (req, res) => {
+  const { subject, day, time } = req.query;
+
+  if (!subject || !day || !time) {
+    return res.status(400).send({ error: 'Subject, day, and time query parameters are required' });
+  }
+
+  try {
+    const students = await Student.find({
+      subjectOfInterest:subject,
+      [`timeSlotsPerDayInWeekend.${day}`]: time
+    });
+    res.send(students);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
